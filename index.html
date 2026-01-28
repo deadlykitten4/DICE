@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="RewardMap">
+  <meta name="keywords" content="Visual Reasoning, MLLM, Spatial Reasoning, RL, GRPO">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RewardMap: Tackling Sparse Rewards in Fine-grained Visual Reasoning via Multi-Stage Reinforcement Learning
+  </title>
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+        <a class="navbar-item" href="https://github.com/fscdc/RewardMap">
+          <span class="icon">
+            <i class="fas fa-home"></i>
+          </span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">RewardMap: Tackling Sparse Rewards in Fine-grained Visual Reasoning
+              via Multi-Stage Reinforcement Learning</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://fscdc.github.io/">Sicheng Feng</a><sup>1†</sup>&#8192;
+              </span>
+              <span class="author-block">
+                <a href="https://cfintech.github.io/">Kaiwen Tuo</a><sup>1,2†</sup>&#8192;
+              </span>
+              <span class="author-block">
+                <a href="https://songw-zju.github.io/">Song Wang</a><sup>3</sup>&#8192;
+              </span>
+              <span class="author-block">
+                <a href="https://ldkong.com/">Lingdong Kong</a><sup>4</sup>&#8192;
+              </span>
+              <span class="author-block">
+                <a href="https://person.zju.edu.cn/en/jkzhu">Jianke Zhu</a><sup>3</sup>&#8192;
+              </span>
+              <span class="author-block">
+                <a href="http://huanwang.tech">Huan Wang</a><sup>1*</sup>&#8192;
+              </span>
+            </div>
+            <h1 style="font-size:23px;font-weight:bold">2025</h1>
+
+            <div class="is-size-5 publication-authors">
+              <span><sup>1</sup>Westlake University, Hangzhou, China</span>
+              <span><sup>2</sup>Tongji University, Shanghai, China</span>
+              <span><sup>3</sup>Zhejiang University, Hangzhou, China</span>
+              <span><sup>4</sup>National University of Singapore, Singapore</span>
+            </div>
+
+            <div style="font-size:15px">
+              <span><sup>&ast;</sup>Corresponding author: wanghuan@westlake.edu.cn</span></br></br>
+            </div>
+
+            <div class="columns is-centered">
+              <div class="column is-narrow">
+                <figure class="image">
+                  <img src="figure/wlu-logo.png" alt="WLU" style="height: 96px; object-fit: contain;">
+                </figure>
+              </div>
+              <div class="column is-narrow">
+                <figure class="image">
+                  <img src="figure/tongji-logo.png" alt="TongjiU" style="height: 96px; object-fit: contain;">
+                </figure>
+              </div>
+              <div class="column is-narrow">
+                <figure class="image">
+                  <img src="figure/zju-logo.jpg" alt="ZJU" style="height: 96px; object-fit: contain;">
+                </figure>
+              </div>
+              <div class="column is-narrow">
+                <figure class="image">
+                  <img src="figure/nus-logo.jpg" alt="NUS" style="height: 96px; object-fit: contain;">
+                </figure>
+              </div>
+            </div>
+
+
+            <div class="columns is-centered">
+              <div class="column is-narrow">
+                <figure class="image is-256x128">
+                  <img src="figure/logo.jpg" alt="ENCODE Lab" style="width: 384px; height: 96px;">
+                </figure>
+              </div>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/2510.02240" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>PDF</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2510.02240" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>ArXiv</span>
+                  </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/fscdc/RewardMap"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                <!-- dataset Link. -->
+                <span class="link-block">
+                  <a href="https://huggingface.co/collections/FSCCS/reasonmap-688517b57d771707a5d64656"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face"
+                        style="width: 20px; height: 20px;">
+                    </span>
+                    <span>Dataset</span>
+                  </a>
+                </span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <div align='center'>
+          <a><img src="./figure/rewardmap_overview.png" height="220"></a>
+        </div>
+        <div class="content has-text-justified">
+          Overview of RewardMap. The framework enhances fine-grained visual understanding and reasoning in
+          MLLMs through reinforcement learning with Group Relative Policy Optimization (GRPO).
+          It consists of two key components: (1) a <b>difficulty-aware reward design</b>,
+          which combines format, correctness, and detail rewards with difficulty-based weighting;
+          and (2) a <b>multi-stage RL curriculum</b>,
+          which schedules training data from simple perception tasks to complex reasoning tasks,
+          ensuring effective optimization tackling sparse rewards.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            Fine-grained visual reasoning remains a core challenge for multimodal large language models (MLLMs).
+            The recently introduced ReasonMap highlights this gap by showing that even advanced MLLMs struggle with
+            spatial reasoning
+            in structured and information-rich settings such as transit maps, a task of clear practical and scientific
+            importance.
+            However, standard reinforcement learning (RL) on such tasks is impeded by sparse rewards and unstable
+            optimization.
+            To address this, we first construct ReasonMap-Plus, an extended dataset that introduces dense reward
+            signals through Visual Question Answering (VQA) tasks, enabling effective cold-start training of
+            fine-grained visual
+            understanding skills. Next, we propose RewardMap, a multi-stage RL framework designed to improve both visual
+            understanding and reasoning capabilities of MLLMs. RewardMap incorporates two key designs. First,
+            we introduce a difficulty-aware reward design that incorporates detail rewards, directly
+            tackling the sparse rewards while providing richer supervision. Second, we propose a multi-stage RL scheme
+            that bootstraps training from simple perception to complex reasoning tasks,
+            offering a more effective cold-start strategy than conventional Supervised Fine-Tuning (SFT).
+            Experiments on ReasonMap and ReasonMap-Plus demonstrate that each component of RewardMap contributes to
+            consistent
+            performance gains, while their combination yields the best results. Moreover,
+            models trained with RewardMap achieve an average improvement of 3.47% across 6 benchmarks spanning spatial
+            reasoning,
+            fine-grained visual reasoning, and general tasks beyond transit maps, underscoring enhanced visual
+            understanding
+            and reasoning capabilities.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">ReasonMap-Plus Datasets</h2>
+          <div align='center'>
+            <a><img src="./figure/reasonmap_plus.png" height="220"></a>
+          </div>
+          <div class="content has-text-justified">
+            Overview of <em>ReasonMap-Plus</em>. <em>ReasonMap-Plus</em> comprises 4,018 questions from 5
+            extended question types and maps from 30 cities across 13 countries.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Results</h2>
+          <div align='center'>
+            <a><img src="./figure/results_reasonmap.png" height="220"></a>
+          </div>
+          <div class="content has-text-justified">
+            <strong>Table 1:</strong>
+            Evaluations of reference models and fine-tuned models on
+            <em>ReasonMap</em>
+            and
+            <em>ReasonMap-Plus</em>.
+            &ldquo;<em>S.</em>&rdquo; represents results for short questions, while
+            &ldquo;<em>L.</em>&rdquo; denotes results for long questions.
+            <strong>Bold</strong> indicates the best results among fine-tuned models, while
+            <u>underline</u> represents the second best.
+          </div>
+
+          <div align='center'>
+            <a><img src="./figure/results_others.png" height="220"></a>
+          </div>
+          <div class="content has-text-justified">
+            <strong>Table 2:</strong>
+            Evaluation of reference models and fine-tuned models on various benchmarks.
+            <strong>Bold</strong> indicates the best results among fine-tuned models, while
+            <u>underline</u> represents the second best.
+            <sup>&dagger;</sup>, <sup>&Dagger;</sup>, <sup>$</sup>, <sup>&ast;</sup>, <sup>&sect;</sup>
+            denote the results from the technical report or the official HuggingFace repository, while all other results
+            are obtained from our own experiments.
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">How to use RewardMap for training your model?</h2>
+
+          <div class="content has-text-justified">
+            <p>Follow the quickstart below to install dependencies, download datasets, train, and merge your model. If
+              you run into any issues, please open an issue on your repository — we’ll help as soon as possible.</p>
+
+            <ol>
+              <!-- 1. Install dependencies -->
+              <li>
+                <strong>Install dependencies</strong>
+                <div
+                  style="position: relative; border: 1px solid #ddd; border-radius: 6px; padding: 10px; background-color: #f9f9f9;">
+                  <button id="copyInstall"
+                    style="position: absolute; top: 6px; right: 10px; background-color: #3273dc; color: white; border: none; padding: 6px 10px; border-radius: 4px; cursor: pointer;"
+                    onclick="copyInstallCmd()">Copy</button>
+                  <pre style="margin: 0; overflow-x: auto;"><code>pip install -r requirements.txt</code></pre>
+                </div>
+                <p class="is-size-7 has-text-grey" style="margin-top: 8px;">If the installation fails, please open an
+                  issue on GitHub.</p>
+              </li>
+
+              <!-- 2. Download the dataset -->
+              <li style="margin-top: 1rem;">
+                <strong>Download the dataset</strong>
+                <p>You can obtain <em>ReasonMap-Plus</em> (for evaluation) and <em>ReasonMap-Train</em> (for RewardMap
+                  training) from Hugging Face, or run the script below; then place all data under the <code>data/</code>
+                  directory.</p>
+                <div
+                  style="position: relative; border: 1px solid #ddd; border-radius: 6px; padding: 10px; background-color: #f9f9f9;">
+                  <button id="copyDownload"
+                    style="position: absolute; top: 6px; right: 10px; background-color: #3273dc; color: white; border: none; padding: 6px 10px; border-radius: 4px; cursor: pointer;"
+                    onclick="copyDownloadCmd()">Copy</button>
+                  <pre style="margin: 0; overflow-x: auto;"><code>python utils/download_dataset.py</code></pre>
+                </div>
+              </li>
+
+              <!-- 3. Training -->
+              <li style="margin-top: 1rem;">
+                <strong>Training</strong>
+                <p>Start RewardMap training with the provided script:</p>
+                <div
+                  style="position: relative; border: 1px solid #ddd; border-radius: 6px; padding: 10px; background-color: #f9f9f9;">
+                  <button id="copyTrain"
+                    style="position: absolute; top: 6px; right: 10px; background-color: #3273dc; color: white; border: none; padding: 6px 10px; border-radius: 4px; cursor: pointer;"
+                    onclick="copyTrainCmd()">Copy</button>
+                  <pre style="margin: 0; overflow-x: auto;"><code># RewardMap training
+  bash scripts/reward_map.sh</code></pre>
+                </div>
+
+                <p style="margin-top: 0.75rem;">After training, merge the trained weights:</p>
+                <div
+                  style="position: relative; border: 1px solid #ddd; border-radius: 6px; padding: 10px; background-color: #f9f9f9;">
+                  <button id="copyMerge"
+                    style="position: absolute; top: 6px; right: 10px; background-color: #3273dc; color: white; border: none; padding: 6px 10px; border-radius: 4px; cursor: pointer;"
+                    onclick="copyMergeCmd()">Copy</button>
+                  <pre style="margin: 0; overflow-x: auto;"><code># merge trained model
+  bash scripts/merge_model.sh</code></pre>
+                </div>
+              </li>
+
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copy helpers (unique IDs/functions to avoid conflicts) -->
+    <script>
+      function flashButton(btn, ok = true) {
+        const old = btn.textContent;
+        btn.textContent = ok ? "Copied" : "Failed";
+        const oldBg = btn.style.backgroundColor;
+        btn.style.backgroundColor = ok ? "#28a745" : "#d9534f";
+        setTimeout(() => {
+          btn.textContent = old;
+          btn.style.backgroundColor = oldBg || "#3273dc";
+        }, 1600);
+      }
+
+      function copyInstallCmd() {
+        const code = `pip install -r requirements.txt`;
+        const btn = document.getElementById("copyInstall");
+        navigator.clipboard.writeText(code).then(() => flashButton(btn, true)).catch(() => flashButton(btn, false));
+      }
+
+      function copyDownloadCmd() {
+        const code = `python utils/download_dataset.py
+  # after download, ensure data are placed under:
+  # ./data/`;
+        const btn = document.getElementById("copyDownload");
+        navigator.clipboard.writeText(code).then(() => flashButton(btn, true)).catch(() => flashButton(btn, false));
+      }
+
+      function copyTrainCmd() {
+        const code = `# RewardMap training
+  bash scripts/reward_map.sh`;
+        const btn = document.getElementById("copyTrain");
+        navigator.clipboard.writeText(code).then(() => flashButton(btn, true)).catch(() => flashButton(btn, false));
+      }
+
+      function copyMergeCmd() {
+        const code = `# merge trained model
+  bash scripts/merge_model.sh`;
+        const btn = document.getElementById("copyMerge");
+        navigator.clipboard.writeText(code).then(() => flashButton(btn, true)).catch(() => flashButton(btn, false));
+      }
+    </script>
+  </section>
+
+
+
+
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{feng2025rewardmap,
+  title={RewardMap: Tackling Sparse Rewards in Fine-grained Visual Reasoning via Multi-Stage Reinforcement Learning},
+  author={Feng, Sicheng and Tuo, Kaiwen and Wang, Song and Kong, Lingdong and Zhu, Jianke and Wang, Huan},
+  journal={arXiv preprint arXiv:2510.02240},
+  year={2025}
+}</code></pre>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div align="center" class="container">
+      <div class="columns is-centered">
+        <div class="content">
+          This website is borrowed from <a href="https://github.com/nerfies/nerfies.github.io">nerfies</a>.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
