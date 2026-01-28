@@ -1,3 +1,3 @@
-# RewardMap
+# DICE
 
-The website for RewardMap is hosted at: https://fscdc.github.io/RewardMap/
+The website for DICE is hosted at: https://github.com/deadlykitten4/DICE/
