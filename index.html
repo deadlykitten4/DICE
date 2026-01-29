@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="description" content="DICE">
-  <meta name="keywords" content="Visual Reasoning, MLLM, Spatial Reasoning, RL, GRPO">
+  <meta name="keywords" content="Diffusion Large Language Models, Kernel Generation, Reinforcement Learning">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>RewardMap: Tackling Sparse Rewards in Fine-grained Visual Reasoning via Multi-Stage Reinforcement Learning
   </title>
@@ -36,7 +36,7 @@
     </div>
     <div class="navbar-menu">
       <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-        <a class="navbar-item" href="https://github.com/fscdc/RewardMap">
+        <a class="navbar-item" href="https://github.com/deadlykitten4/DICE">
           <span class="icon">
             <i class="fas fa-home"></i>
           </span>
@@ -52,23 +52,22 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">RewardMap: Tackling Sparse Rewards in Fine-grained Visual Reasoning
-              via Multi-Stage Reinforcement Learning</h1>
+            <h1 class="title is-1 publication-title">DICE: Diffusion Large Language Models Excel at Generating CUDA Kernels</h1>
             <div class="is-size-5 publication-authors">
               <span class="author-block">
-                <a href="https://fscdc.github.io/">Sicheng Feng</a><sup>1†</sup>&#8192;
+                <a href="https://deadlykitten4.github.io/">Haolei Bai</a><sup>1</sup>&#8192;
               </span>
               <span class="author-block">
-                <a href="https://cfintech.github.io/">Kaiwen Tuo</a><sup>1,2†</sup>&#8192;
+                <a href="https://lkongam.github.io/">Lingcheng Kong</a><sup>1,2</sup>&#8192;
               </span>
               <span class="author-block">
-                <a href="https://songw-zju.github.io/">Song Wang</a><sup>3</sup>&#8192;
+                <a href="https://yige24.github.io/">Xueyi Chen</a><sup>1</sup>&#8192;
               </span>
               <span class="author-block">
-                <a href="https://ldkong.com/">Lingdong Kong</a><sup>4</sup>&#8192;
+                <a href="https://jiamian-wang.github.io/">Jiamian Wang</a><sup>3</sup>&#8192;
               </span>
               <span class="author-block">
-                <a href="https://person.zju.edu.cn/en/jkzhu">Jianke Zhu</a><sup>3</sup>&#8192;
+                <a href="https://ztao.cc/index.html">Zhiqiang Tao</a><sup>3</sup>&#8192;
               </span>
               <span class="author-block">
                 <a href="http://huanwang.tech">Huan Wang</a><sup>1*</sup>&#8192;
@@ -78,13 +77,12 @@
 
             <div class="is-size-5 publication-authors">
               <span><sup>1</sup>Westlake University, Hangzhou, China</span>
-              <span><sup>2</sup>Tongji University, Shanghai, China</span>
-              <span><sup>3</sup>Zhejiang University, Hangzhou, China</span>
-              <span><sup>4</sup>National University of Singapore, Singapore</span>
+              <span><sup>2</sup>The Hong Kong University of Science and Technology, HongKong, China</span>
+              <span><sup>3</sup>Rochester Institute of Technology, Rochester, America</span>
             </div>
 
             <div style="font-size:15px">
-              <span><sup>&ast;</sup>Corresponding author: wanghuan@westlake.edu.cn</span></br></br>
+              <span><sup>†</sup>Corresponding author: wanghuan@westlake.edu.cn</span></br></br>
             </div>
 
             <div class="columns is-centered">
@@ -140,7 +138,7 @@
                 </span>
                 <!-- Code Link. -->
                 <span class="link-block">
-                  <a href="https://github.com/fscdc/RewardMap"
+                  <a href="https://github.com/deadlykitten4/DICE"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
@@ -176,13 +174,11 @@
           <a><img src="./figure/rewardmap_overview.png" height="220"></a>
         </div>
         <div class="content has-text-justified">
-          Overview of RewardMap. The framework enhances fine-grained visual understanding and reasoning in
-          MLLMs through reinforcement learning with Group Relative Policy Optimization (GRPO).
-          It consists of two key components: (1) a <b>difficulty-aware reward design</b>,
-          which combines format, correctness, and detail rewards with difficulty-based weighting;
-          and (2) a <b>multi-stage RL curriculum</b>,
-          which schedules training data from simple perception tasks to complex reasoning tasks,
-          ensuring effective optimization tackling sparse rewards.
+          Overview of DICE. The framework enhances CUDA kernel generation robustness in dLLMs by leveraging TraceRL.
+          This hierarchical approach integrates: (1) <b>Bi-phase Curated Reinforcement Learning framework<b>,
+          a progressive RL training strategy that consists of kernel infilling and end-to-end kernel generation stages to ensure functional correctness and high performance of generated CUDA kernels,
+          and (2) <b>Data Scheduling<b>, transitioning training data from basic single operations to complex whole-model structures during the two RL stages.
+          A valid reward will only be returned if the generated CUDA kernel can be compiled and functions correctly.
         </div>
       </div>
     </div>
@@ -195,30 +191,20 @@
         <div class="column is-four-fifths">
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
-            Fine-grained visual reasoning remains a core challenge for multimodal large language models (MLLMs).
-            The recently introduced ReasonMap highlights this gap by showing that even advanced MLLMs struggle with
-            spatial reasoning
-            in structured and information-rich settings such as transit maps, a task of clear practical and scientific
-            importance.
-            However, standard reinforcement learning (RL) on such tasks is impeded by sparse rewards and unstable
-            optimization.
-            To address this, we first construct ReasonMap-Plus, an extended dataset that introduces dense reward
-            signals through Visual Question Answering (VQA) tasks, enabling effective cold-start training of
-            fine-grained visual
-            understanding skills. Next, we propose RewardMap, a multi-stage RL framework designed to improve both visual
-            understanding and reasoning capabilities of MLLMs. RewardMap incorporates two key designs. First,
-            we introduce a difficulty-aware reward design that incorporates detail rewards, directly
-            tackling the sparse rewards while providing richer supervision. Second, we propose a multi-stage RL scheme
-            that bootstraps training from simple perception to complex reasoning tasks,
-            offering a more effective cold-start strategy than conventional Supervised Fine-Tuning (SFT).
-            Experiments on ReasonMap and ReasonMap-Plus demonstrate that each component of RewardMap contributes to
-            consistent
-            performance gains, while their combination yields the best results. Moreover,
-            models trained with RewardMap achieve an average improvement of 3.47% across 6 benchmarks spanning spatial
-            reasoning,
-            fine-grained visual reasoning, and general tasks beyond transit maps, underscoring enhanced visual
-            understanding
-            and reasoning capabilities.
+            Diffusion large language models (dLLMs) have emerged as a compelling alternative to autoregressive (AR) LLMs,
+            owing to their capacity for parallel token generation. This paradigm is particularly well-suited for code generation,
+            where holistic structural planning and non-sequential refinement are critical.
+            Despite this potential, tailoring dLLMs for CUDA kernel generation remains challenging,
+            obstructed not only by the high specialization but also by the severe lack of high-quality training data.
+            To address these challenges, we construct CuKe,
+            an expanded dataset optimized for high-performance CUDA kernels.
+            And we propose a bi-phase curated reinforcement learning (BiC-RL) framework
+            consisting of a CUDA kernel infilling stage and an end-to-end CUDA kernel generation stage.
+            Leveraging this training framework, we introduce DICE,
+            a series of diffusion language models designed for CUDA kernel generation,
+            spanning three parameter scales, 1.7B, 4B, and 8B.
+            Extensive experiments on the KernelBench demonstrate that DICE significantly outperforms both AR LLMs and existing dLLMs of comparable scale,
+            establishing a new state-of-the-art for CUDA kernel generation.
           </div>
         </div>
       </div>
