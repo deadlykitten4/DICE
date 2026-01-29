@@ -93,17 +93,12 @@
               </div>
               <div class="column is-narrow">
                 <figure class="image">
-                  <img src="figure/tongji-logo.png" alt="TongjiU" style="height: 96px; object-fit: contain;">
+                  <img src="figure/hkust-logo.png" alt="HKUST" style="height: 96px; object-fit: contain;">
                 </figure>
               </div>
               <div class="column is-narrow">
                 <figure class="image">
-                  <img src="figure/zju-logo.jpg" alt="ZJU" style="height: 96px; object-fit: contain;">
-                </figure>
-              </div>
-              <div class="column is-narrow">
-                <figure class="image">
-                  <img src="figure/nus-logo.jpg" alt="NUS" style="height: 96px; object-fit: contain;">
+                  <img src="figure/rit-logo.jpg" alt="RIT" style="height: 96px; object-fit: contain;">
                 </figure>
               </div>
             </div>
@@ -171,13 +166,13 @@
     <div class="container is-max-desktop">
       <div class="hero-body">
         <div align='center'>
-          <a><img src="./figure/rewardmap_overview.png" height="220"></a>
+          <a><img src="./figure/dice_framework.pdf" height="220"></a>
         </div>
         <div class="content has-text-justified">
-          Overview of DICE. The framework enhances CUDA kernel generation robustness in dLLMs by leveraging TraceRL.
-          This hierarchical approach integrates: (1) <b>Bi-phase Curated Reinforcement Learning framework<b>,
+          Overview of <b>DICE</b>. The framework enhances CUDA kernel generation robustness in dLLMs by leveraging TraceRL.
+          This hierarchical approach integrates: (1) <b>Bi-phase Curated Reinforcement Learning framework</b>,
           a progressive RL training strategy that consists of kernel infilling and end-to-end kernel generation stages to ensure functional correctness and high performance of generated CUDA kernels,
-          and (2) <b>Data Scheduling<b>, transitioning training data from basic single operations to complex whole-model structures during the two RL stages.
+          and (2) <b>Data Scheduling</b>, transitioning training data from basic single operations to complex whole-model structures during the two RL stages.
           A valid reward will only be returned if the generated CUDA kernel can be compiled and functions correctly.
         </div>
       </div>
@@ -196,12 +191,12 @@
             where holistic structural planning and non-sequential refinement are critical.
             Despite this potential, tailoring dLLMs for CUDA kernel generation remains challenging,
             obstructed not only by the high specialization but also by the severe lack of high-quality training data.
-            To address these challenges, we construct CuKe,
-            an expanded dataset optimized for high-performance CUDA kernels.
-            And we propose a bi-phase curated reinforcement learning (BiC-RL) framework
+            To address these challenges, we construct <i><b>CuKe</b></i>,
+            an expanded dataset optimized for high-performance <b>CU</b>DA <b>ke</b>rnels.
+            And we propose a bi-phase curated reinforcement learning (<i><b>BiC-RL</b></i>) framework
             consisting of a CUDA kernel infilling stage and an end-to-end CUDA kernel generation stage.
-            Leveraging this training framework, we introduce DICE,
-            a series of diffusion language models designed for CUDA kernel generation,
+            Leveraging this training framework, we introduce </b></i>DICE</b></i>,
+            a series of <b>di</b>ffusion language models designed for <b>C</b>UDA k<b>e</b>rnel generation,
             spanning three parameter scales, 1.7B, 4B, and 8B.
             Extensive experiments on the KernelBench demonstrate that DICE significantly outperforms both AR LLMs and existing dLLMs of comparable scale,
             establishing a new state-of-the-art for CUDA kernel generation.
