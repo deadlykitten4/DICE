@@ -212,13 +212,17 @@
       <!-- Abstract. -->
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">ReasonMap-Plus Datasets</h2>
+          <h2 class="title is-3">Inference Paradigm of dLLMs</h2>
           <div align='center'>
-            <a><img src="./figure/reasonmap_plus.png" height="220"></a>
+            <a><img src="./figure/generation_order.png" height="220"></a>
           </div>
           <div class="content has-text-justified">
-            Overview of <em>ReasonMap-Plus</em>. <em>ReasonMap-Plus</em> comprises 4,018 questions from 5
-            extended question types and maps from 30 cities across 13 countries.
+            The inference paradigm of diffusion large language models.
+            <b>Left Part</b>: The sequence is divided into several blocks, where the block length equals four in this figure.
+            The block diffusion mechanism enables models to generate autoregressively between blocks,
+            while parallel discrete decoding within blocks. All the KV cache from previous blocks will be reused.
+            <b>Right Part</b>: An actual step-by-step generation trajectory for an example CUDA kernel.
+            While the overall trend remains autoregressive, we can clearly observe lots of non-autoregressive behavior during the generation process.
           </div>
         </div>
       </div>
