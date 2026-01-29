@@ -4,16 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b51d27d5-702e-447d-8dd9-7dd245484ab5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/template/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/template/README.md" afterDir="false" />
-    </list>
+    <list default="true" id="b51d27d5-702e-447d-8dd9-7dd245484ab5" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/template" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -21,12 +19,12 @@
     &quot;assignee&quot;: &quot;deadlykitten4&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;git@github.com:deadlykitten4/DICE.git&quot;,
-    &quot;accountId&quot;: &quot;498ad9cd-2b78-4b15-afdf-3967f88d864c&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/deadlykitten4/DICE.git",
+    "accountId": "498ad9cd-2b78-4b15-afdf-3967f88d864c"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -39,6 +37,8 @@
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "gh-pages",
     "junie.onboarding.icon.badge.shown": "true",
     "last_opened_file_path": "/Users/baihaolei/Projects/DICE/figure",
     "node.js.detected.package.eslint": "true",
@@ -176,6 +176,7 @@
       <option name="presentableId" value="Default" />
       <updated>1769611778824</updated>
       <workItem from="1769611780000" duration="754000" />
+      <workItem from="1769671914588" duration="477000" />
     </task>
     <servers />
   </component>
