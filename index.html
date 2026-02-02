@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>DICE: Diffusion Large Language Models Excel at Generating CUDA Kernels
   </title>
+  <link rel="icon" type="image/png" href="./figure/dice.png">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
@@ -70,7 +71,7 @@
                 <a href="https://ztao.cc/index.html">Zhiqiang Tao</a><sup>3</sup>&#8192;
               </span>
               <span class="author-block">
-                <a href="http://huanwang.tech">Huan Wang</a><sup>1*</sup>&#8192;
+                <a href="http://huanwang.tech">Huan Wang</a><sup>1†</sup>&#8192;
               </span>
             </div>
             <h1 style="font-size:23px;font-weight:bold">2026</h1>
@@ -192,11 +193,11 @@
             Despite this potential, tailoring dLLMs for CUDA kernel generation remains challenging,
             obstructed not only by the high specialization but also by the severe lack of high-quality training data.
             To address these challenges, we construct <i><b>CuKe</b></i>,
-            an expanded dataset optimized for high-performance <b>CU</b>DA <b>ke</b>rnels.
-            And we propose a bi-phase curated reinforcement learning (<i><b>BiC-RL</b></i>) framework
+            an expanded dataset optimized for high-performance <u>CU</u>DA <u>ke</u>rnels.
+            And we propose a <u>bi</u>-phase <u>c</u>urated <u>r</u>einforcement <u>l</u>earning (<i><b>BiC-RL</b></i>) framework
             consisting of a CUDA kernel infilling stage and an end-to-end CUDA kernel generation stage.
             Leveraging this training framework, we introduce </b></i>DICE</b></i>,
-            a series of <b>di</b>ffusion language models designed for <b>C</b>UDA k<b>e</b>rnel generation,
+            a series of <b>di</b>ffusion language models designed for <u>C</u>UDA k<u>e</u>rnel generation,
             spanning three parameter scales, 1.7B, 4B, and 8B.
             Extensive experiments on the KernelBench demonstrate that DICE significantly outperforms both AR LLMs and existing dLLMs of comparable scale,
             establishing a new state-of-the-art for CUDA kernel generation.
@@ -277,75 +278,75 @@
   </section>
 
 
-  <section class="section">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">How to use RewardMap for training your model?</h2>
+<!--  <section class="section">-->
+<!--    <div class="container is-max-desktop">-->
+<!--      <div class="columns is-centered has-text-centered">-->
+<!--        <div class="column is-four-fifths">-->
+<!--          <h2 class="title is-3">How to use RewardMap for training your model?</h2>-->
 
-          <div class="content has-text-justified">
-            <p>Follow the quickstart below to install dependencies, download datasets, train, and merge your model. If
-              you run into any issues, please open an issue on your repository — we’ll help as soon as possible.</p>
+<!--          <div class="content has-text-justified">-->
+<!--            <p>Follow the quickstart below to install dependencies, download datasets, train, and merge your model. If-->
+<!--              you run into any issues, please open an issue on your repository — we’ll help as soon as possible.</p>-->
 
-            <ol>
-              <!-- 1. Install dependencies -->
-              <li>
-                <strong>Install dependencies</strong>
-                <div
-                  style="position: relative; border: 1px solid #ddd; border-radius: 6px; padding: 10px; background-color: #f9f9f9;">
-                  <button id="copyInstall"
-                    style="position: absolute; top: 6px; right: 10px; background-color: #3273dc; color: white; border: none; padding: 6px 10px; border-radius: 4px; cursor: pointer;"
-                    onclick="copyInstallCmd()">Copy</button>
-                  <pre style="margin: 0; overflow-x: auto;"><code>pip install -r requirements.txt</code></pre>
-                </div>
-                <p class="is-size-7 has-text-grey" style="margin-top: 8px;">If the installation fails, please open an
-                  issue on GitHub.</p>
-              </li>
+<!--            <ol>-->
+<!--              &lt;!&ndash; 1. Install dependencies &ndash;&gt;-->
+<!--              <li>-->
+<!--                <strong>Install dependencies</strong>-->
+<!--                <div-->
+<!--                  style="position: relative; border: 1px solid #ddd; border-radius: 6px; padding: 10px; background-color: #f9f9f9;">-->
+<!--                  <button id="copyInstall"-->
+<!--                    style="position: absolute; top: 6px; right: 10px; background-color: #3273dc; color: white; border: none; padding: 6px 10px; border-radius: 4px; cursor: pointer;"-->
+<!--                    onclick="copyInstallCmd()">Copy</button>-->
+<!--                  <pre style="margin: 0; overflow-x: auto;"><code>pip install -r requirements.txt</code></pre>-->
+<!--                </div>-->
+<!--                <p class="is-size-7 has-text-grey" style="margin-top: 8px;">If the installation fails, please open an-->
+<!--                  issue on GitHub.</p>-->
+<!--              </li>-->
 
-              <!-- 2. Download the dataset -->
-              <li style="margin-top: 1rem;">
-                <strong>Download the dataset</strong>
-                <p>You can obtain <em>ReasonMap-Plus</em> (for evaluation) and <em>ReasonMap-Train</em> (for RewardMap
-                  training) from Hugging Face, or run the script below; then place all data under the <code>data/</code>
-                  directory.</p>
-                <div
-                  style="position: relative; border: 1px solid #ddd; border-radius: 6px; padding: 10px; background-color: #f9f9f9;">
-                  <button id="copyDownload"
-                    style="position: absolute; top: 6px; right: 10px; background-color: #3273dc; color: white; border: none; padding: 6px 10px; border-radius: 4px; cursor: pointer;"
-                    onclick="copyDownloadCmd()">Copy</button>
-                  <pre style="margin: 0; overflow-x: auto;"><code>python utils/download_dataset.py</code></pre>
-                </div>
-              </li>
+<!--              &lt;!&ndash; 2. Download the dataset &ndash;&gt;-->
+<!--              <li style="margin-top: 1rem;">-->
+<!--                <strong>Download the dataset</strong>-->
+<!--                <p>You can obtain <em>ReasonMap-Plus</em> (for evaluation) and <em>ReasonMap-Train</em> (for RewardMap-->
+<!--                  training) from Hugging Face, or run the script below; then place all data under the <code>data/</code>-->
+<!--                  directory.</p>-->
+<!--                <div-->
+<!--                  style="position: relative; border: 1px solid #ddd; border-radius: 6px; padding: 10px; background-color: #f9f9f9;">-->
+<!--                  <button id="copyDownload"-->
+<!--                    style="position: absolute; top: 6px; right: 10px; background-color: #3273dc; color: white; border: none; padding: 6px 10px; border-radius: 4px; cursor: pointer;"-->
+<!--                    onclick="copyDownloadCmd()">Copy</button>-->
+<!--                  <pre style="margin: 0; overflow-x: auto;"><code>python utils/download_dataset.py</code></pre>-->
+<!--                </div>-->
+<!--              </li>-->
 
-              <!-- 3. Training -->
-              <li style="margin-top: 1rem;">
-                <strong>Training</strong>
-                <p>Start RewardMap training with the provided script:</p>
-                <div
-                  style="position: relative; border: 1px solid #ddd; border-radius: 6px; padding: 10px; background-color: #f9f9f9;">
-                  <button id="copyTrain"
-                    style="position: absolute; top: 6px; right: 10px; background-color: #3273dc; color: white; border: none; padding: 6px 10px; border-radius: 4px; cursor: pointer;"
-                    onclick="copyTrainCmd()">Copy</button>
-                  <pre style="margin: 0; overflow-x: auto;"><code># RewardMap training
-  bash scripts/reward_map.sh</code></pre>
-                </div>
+<!--              &lt;!&ndash; 3. Training &ndash;&gt;-->
+<!--              <li style="margin-top: 1rem;">-->
+<!--                <strong>Training</strong>-->
+<!--                <p>Start RewardMap training with the provided script:</p>-->
+<!--                <div-->
+<!--                  style="position: relative; border: 1px solid #ddd; border-radius: 6px; padding: 10px; background-color: #f9f9f9;">-->
+<!--                  <button id="copyTrain"-->
+<!--                    style="position: absolute; top: 6px; right: 10px; background-color: #3273dc; color: white; border: none; padding: 6px 10px; border-radius: 4px; cursor: pointer;"-->
+<!--                    onclick="copyTrainCmd()">Copy</button>-->
+<!--                  <pre style="margin: 0; overflow-x: auto;"><code># RewardMap training-->
+<!--  bash scripts/reward_map.sh</code></pre>-->
+<!--                </div>-->
 
-                <p style="margin-top: 0.75rem;">After training, merge the trained weights:</p>
-                <div
-                  style="position: relative; border: 1px solid #ddd; border-radius: 6px; padding: 10px; background-color: #f9f9f9;">
-                  <button id="copyMerge"
-                    style="position: absolute; top: 6px; right: 10px; background-color: #3273dc; color: white; border: none; padding: 6px 10px; border-radius: 4px; cursor: pointer;"
-                    onclick="copyMergeCmd()">Copy</button>
-                  <pre style="margin: 0; overflow-x: auto;"><code># merge trained model
-  bash scripts/merge_model.sh</code></pre>
-                </div>
-              </li>
+<!--                <p style="margin-top: 0.75rem;">After training, merge the trained weights:</p>-->
+<!--                <div-->
+<!--                  style="position: relative; border: 1px solid #ddd; border-radius: 6px; padding: 10px; background-color: #f9f9f9;">-->
+<!--                  <button id="copyMerge"-->
+<!--                    style="position: absolute; top: 6px; right: 10px; background-color: #3273dc; color: white; border: none; padding: 6px 10px; border-radius: 4px; cursor: pointer;"-->
+<!--                    onclick="copyMergeCmd()">Copy</button>-->
+<!--                  <pre style="margin: 0; overflow-x: auto;"><code># merge trained model-->
+<!--  bash scripts/merge_model.sh</code></pre>-->
+<!--                </div>-->
+<!--              </li>-->
 
-            </ol>
-          </div>
-        </div>
-      </div>
-    </div>
+<!--            </ol>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
 
     <!-- Copy helpers (unique IDs/functions to avoid conflicts) -->
     <script>
