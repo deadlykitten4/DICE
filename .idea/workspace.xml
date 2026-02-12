@@ -5,20 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b51d27d5-702e-447d-8dd9-7dd245484ab5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026_1_28_23_31_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026_1_28_23_31_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026_1_28_23_31__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026_1_28_23_31__Changes_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/figure/nku-logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/figure/nus-logo.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/figure/reasonmap_plus.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/figure/results_others.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/figure/results_reasonmap.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/figure/rewardmap_overview.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/figure/rit-logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/figure/rit-logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/figure/tongji-logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/figure/zju-logo.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -309,7 +295,7 @@
       <workItem from="1770013375118" duration="14000" />
       <workItem from="1770019317973" duration="1059000" />
       <workItem from="1770086769068" duration="2000" />
-      <workItem from="1770879842026" duration="689000" />
+      <workItem from="1770879842026" duration="1067000" />
     </task>
     <servers />
   </component>
