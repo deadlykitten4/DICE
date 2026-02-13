@@ -16,6 +16,8 @@
 
 </div>
 
+---
+
 > **[Diffusion Large Language Models Excel at Generating CUDA Kernels](https://arxiv.org/abs/2602.11715)**
 > 
 > *Haolei Bai<sup>1</sup>, Lingcheng Kong<sup>1,2</sup>, Xueyi Chen<sup>1</sup>, Jiamian Wang<sup>3</sup>, Zhiqiang Tao<sup>3</sup>, Huan Wang<sup>1,†</sup>*   
