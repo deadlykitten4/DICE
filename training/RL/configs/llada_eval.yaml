@@ -1,0 +1,33 @@
+experiment:
+    project: "llada_eval" # need to be same of this file name
+    num_node: 1 # the number of machines you have
+    node_index: 0 # no need to change
+
+
+model: "/abs/path/of/model" # absolute path of your model
+model_base: "llada" # set llada for LLaDA and MMaDA
+
+# dataset you want to eval on, you need to download first, you can also modify your own dataset, see instructions in ./data
+dataset:
+    eval_dataset: "MATH500" #"MBPP""MATH500""GSM8K""AIME2024""GPQA""LiveCodeBench""HumanEval""LiveBench"
+    data_type: "math" #"code""math"
+
+execute:
+    num_chunk: 128 # batch size of executing codes in coding eval tasks
+
+rollout:
+    num_response_per_task: 3
+    temperature: 0.1
+    steps: 1024 # total steps of unmasking
+    max_gen_length: 1024
+    batch_size: 2
+    remasking_strategy: "low_confidence_dynamic" #"low_confidence_static""low_confidence_dynamic"
+    target: "confidence" # target to decide which tokens to unmask, eg. confidence, margin_confidence and neg_entropy
+    dynamic_threshold: 0.95 # no use for "low_confidence_static"
+    block_size: 32
+    further_horizon: 128 # We find that performing the forward pass with a further horizon, eg. 128, (kv-cache sequence before current block, while doing full forward for currect [block_size + further_horizon] length sequence) yields competitive performance to running without KV-cache. Balances speed and performance.
+    output_unmasking_history: True
+    use_cache: True
+
+
+

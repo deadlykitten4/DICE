@@ -1,0 +1,58 @@
+wandb:
+  entity: null
+  resume: 'auto'
+
+
+experiment:
+    project: "sft_trado" # need to be same of this file name 
+    num_node: 1 # the number of machines you have
+
+
+model:
+    pretrained_model: "/abs/path/of/model" # absolute path of your model
+    optimized_name: "optimized" # the output name for your optimized model, will be saved under sft_sdar/trado
+
+
+
+# sft dataset
+dataset:
+    optimization_data: "dataset_name" # "sft_openr1math_trado"
+
+training:
+    gradient_checkpointing_enable: True # if the sequence is very larger, set as True
+    gradient_accumulation_steps: 16
+    batch_size_lm: 1
+    mixed_precision: "bf16"
+    enable_tf32: True
+    seed: 10086
+    num_train_epochs: 1
+    max_grad_norm: 1
+    method: "semi-ar" # "semi-ar""trace"
+    lower_p: 0.1
+    upper_p: 0.9
+    block_size: 4 # the block size of your model
+    shrink: 1
+    post_num: 0 # number of pad token need to be trained for each data point
+    max_gen_length: 2000
+    max_prompt_len: 784
+
+
+
+optimizer:
+    name: adamw
+    params: # default adamw params
+        learning_rate: 1e-5
+        scale_lr: False # scale learning rate by total batch size
+        beta1: 0.9
+        beta2: 0.999
+        weight_decay: 0.0
+        epsilon: 1e-8
+
+lr_scheduler:
+    scheduler: "cosine"
+    params:
+        learning_rate: ${optimizer.params.learning_rate}
+        warmup_steps: 0
+        min_lr_scale: 1.0
+
+

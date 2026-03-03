@@ -1,0 +1,46 @@
+experiment:
+    project: "dream_multinode_eval" # need to be same of this file name
+    num_node: 8 # the number of machines you have
+    node_index: 0 # no need to change
+
+
+# only need to be set when using multi-nodes
+system:
+    HTTP_PROXY: "http://xxx.xx.xxx.xxx:xxxx" # your proxy, if don't need, set to null
+    HF_HOME: "/abs/path/of/HF_HOME" # the absolute path of HF_HOME, if using default, set to null
+    env_name: "env_name" # the env name, needed 
+    envs_dir: "/abs/path/of/envs" # if using default, set to null
+    base_dir: "/abs/path/of/DLLM-RL" # the working directory
+
+
+model: "/abs/path/of/model" # absolute path of your model
+model_base: "dream" # set dream for Dream and Diffu-coder models
+
+# dataset you want to eval on, you need to download first, you can also modify your own dataset, see instructions in ./data
+dataset:
+    eval_dataset: "LiveBench" #"MBPP""MATH500""GSM8K""AIME2024""LiveCodeBench""HumanEval""LiveBench"
+    data_type: "code" #"code""math"
+
+execute:
+    num_chunk: 128 # batch size of executing codes in coding eval tasks
+
+rollout:
+    num_response_per_task: 3
+    temperature: 0.1
+    alg_temp: 0
+    pad_target_penalty: 1.0 # sometimes the pad token has very large logits, leads to early stop in inference. 1.0 means no penalty
+    steps: 1024 # total steps of unmasking
+    max_gen_length: 1024
+    batch_size: 2
+    top_p: 0.95
+    top_k: 40
+    remasking_strategy: "low_confidence_static" #"low_confidence_static""low_confidence_dynamic"
+    target: "confidence" # target to decide which tokens to unmask, eg. confidence, margin_confidence and neg_entropy
+    dynamic_threshold: 0.95 # no use for "low_confidence_static"
+    block_size: 32
+    further_horizon: 128 # We find that performing the forward pass with a further horizon, eg. 128, (kv-cache sequence before current block, while doing full forward for currect [block_size + further_horizon] length sequence) yields competitive performance to running without KV-cache. Balances speed and performance.
+    output_unmasking_history: False
+    use_cache: True
+
+
+

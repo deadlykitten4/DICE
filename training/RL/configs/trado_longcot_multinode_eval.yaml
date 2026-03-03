@@ -1,0 +1,45 @@
+experiment:
+    project: "trado_longcot_multinode_eval"
+    num_node: 4 # the number of machines you have
+    node_index: 0 # no need to change
+
+# only need to be set when using multi-nodes
+system:
+    HTTP_PROXY: "http://xxx.xx.xxx.xxx:xxxx" # your proxy, if don't need, set to null
+    HF_HOME: "/abs/path/of/HF_HOME" # the absolute path of HF_HOME, if using default, set to null
+    env_name: "env_name" # the env name, needed 
+    envs_dir: "/abs/path/of/envs" # if using default, set to null
+    base_dir: "/abs/path/of/DLLM-RL" # the working directory
+
+
+
+
+model: "/abs/path/of/model" # absolute path of your model
+model_base: "trado" # set sdar for TraDo and SDAR
+
+
+# dataset you want to eval on, you need to download first, you can also modify your own dataset, see instructions in ./data
+dataset:
+    eval_dataset: "MATH500" #"MBPP""MATH500""GSM8K""AIME2024""GPQA""LiveCodeBench""HumanEval""LiveBench"
+    data_type: "math" #"code""math"
+
+execute:
+    num_chunk: 128
+
+rollout:
+    tensor_parallel_size: 1 # set to 1 by default, if oom, try reduce max_active first, if still oom, set tensor_parallel_size to 8
+    max_active: 2
+    num_response_per_task: 1
+    temperature: 1.0
+    max_token: 30000 # max generation token num
+    block_size: 4
+    denoising_steps_per_block: 4
+    top_p: 1.0
+    top_k: 0
+    remasking_strategy: "low_confidence_dynamic" #"low_confidence_static""low_confidence_dynamic"
+    dynamic_threshold: 0.9
+    start_with_think: True # if not reasoning model, set to False, otherwise True
+    output_unmasking_history: False
+    stop_token_list: ["<|im_end|>"]
+
+

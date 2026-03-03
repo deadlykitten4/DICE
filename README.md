@@ -38,6 +38,10 @@ We provide the curated CuKe dataset for SFT in
 ```bash
 DICE/training/sft/llama_factory_sdar/data/CuKe_dataset.json
 ```
+We provide the data for two stages of BiC-RL in the folder
+```bash
+DICE/rl_data
+```
 
 #### 2.2 Supervised fine-tuning
 We follow the training process of [SDAR](https://github.com/JetAstra/SDAR), you may check [here](https://github.com/JetAstra/SDAR/tree/main/training) for more instruction.
@@ -48,6 +52,7 @@ torchrun --nnodes 1 --node_rank 0 --nproc_per_node 8 --master_addr 127.0.0.1 --m
 
 #### 2.2 BiC-RL
 ```bash
+cd DICE/training/rl
 # kernel infilling stage
 python rl.py config=configs/rl_sdar_kernel_infilling-8b.yaml
 # end-to-end kernel generation stage

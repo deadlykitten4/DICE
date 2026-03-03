@@ -1,0 +1,113 @@
+wandb:
+  entity: null
+  resume: 'auto'
+
+
+experiment:
+    project: "rl_dream"   # need to be same of this file name
+    function: "train"
+    start_from_scratch: True  # set to True by default, if you stopped the training, and want to keep training with your ckpt model.optimized_name, set to False, and set current_epoch to the last step you stopped   
+    total_step: 50
+    save_every: 10
+    eval_every: 10
+    current_epoch: 1
+    deepspeed_file: "1_node_8_gpus_deepspeed_zero3"
+    num_node: 1
+    node_index: 0 # no need to change
+
+model:
+    pretrained_model: "/abs/path/of/model" # absolute path of your model
+    optimized_name: "optimized" # the output name for your optimized model, will be saved under sft_dream/ckpt
+    model_base: "dream" # set dream for Dream and Diffu-coder models
+
+
+
+dataset:
+    train_dataset: "dataset_name" # "MATH_train""PrimeIntellect"
+    optimization_data: "rl_data" # name of the rollout data output
+    data_type: "math" # "math" "code" 
+
+# also see explanations in eval configs
+rollout:
+    num_task_per_step: 32
+    num_response_per_task: 8
+    temperature: 0.8
+    alg_temp: 0
+    pad_target_penalty: 1.0
+    steps: 1024
+    max_gen_length: 1024
+    batch_size: 2
+    top_p: 0.9
+    top_k: 50
+    remasking_strategy: "low_confidence_static" #"low_confidence_static""low_confidence_dynamic"
+    target: "confidence" # target to decide which tokens to unmask, eg. confidence, margin_confidence and neg_entropy
+    dynamic_threshold: 0.95 # no use for "low_confidence_static"
+    block_size: 32
+    further_horizon: 32
+    use_cache: True
+
+execute:
+    num_chunk: 128 # batch size of executing codes in coding eval tasks
+
+training:
+    gradient_accumulation_steps: 128
+    batch_size_lm: 2
+    mixed_precision: "bf16"
+    enable_tf32: True
+    seed: 10086
+    num_train_epochs: 1
+    max_grad_norm: 1.0
+    method: "TraceRL" # "random_masking" "TraceRL" "coupled"
+    lower_p: 0.1
+    upper_p: 0.9
+    shrink: 8
+    post_num: 0
+    mask_times_per_sample: 35
+    max_gen_length: ${rollout.max_gen_length}
+    max_prompt_len: 512
+    eps: 0.20
+    beta: 0.01
+    use_kl_estimator_k3: True
+
+
+optimizer:
+    name: adamw
+    params: # default adamw params
+        learning_rate: 1e-6
+        scale_lr: False # scale learning rate by total batch size
+        beta1: 0.9
+        beta2: 0.999
+        weight_decay: 0.0
+        epsilon: 1e-8
+
+
+lr_scheduler:
+    scheduler: "cosine"
+    params:
+        learning_rate: ${optimizer.params.learning_rate}
+        warmup_steps: 0
+        min_lr_scale: 1.0
+
+
+evaluation:
+    eval_dataset: "MATH500"  # "MATH500" "LiveCodeBench"
+    data_type: "math" # "math" "code"
+    num_response_per_task: 3
+    temperature: 0.1
+    alg_temp: 0
+    pad_target_penalty: 1.0
+    steps: 1600
+    max_gen_length: 1600
+    batch_size: 2
+    top_p: 0.95
+    top_k: 40
+    remasking_strategy: ["low_confidence_static"] #"low_confidence_static""low_confidence_dynamic"
+    target: "confidence" # target to decide which tokens to unmask, eg. confidence, margin_confidence and neg_entropy
+    dynamic_threshold: 0.95 # no use for "low_confidence_static"
+    block_size: [32]
+    further_horizon: 128
+    use_cache: True
+
+
+
+# len(remasking_strategy) must == len(block_size)
