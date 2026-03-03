@@ -22,7 +22,7 @@
 
 ## 🗓️ Plan
 
-- [ ] We will release our code soon. Stay tuned!
+- [x] **2026.03.03**: We release our code of training and evaluation!
 - [x] **2026.02.13**: We release DICE-1.7B, DICE-4B, and DICE-8B on [Hugging Face](https://huggingface.co/collections/DeadlyKitt3n/dice) !
 - [x] **2026.02.13**: The paper is on [arXiv](https://arxiv.org/abs/2602.11715) !
 
