@@ -47,6 +47,12 @@ torchrun --nnodes 1 --node_rank 0 --nproc_per_node 8 --master_addr 127.0.0.1 --m
 ```
 
 #### 2.2 BiC-RL
+```bash
+# kernel infilling stage
+python rl.py config=configs/rl_sdar_kernel_infilling-8b.yaml
+# end-to-end kernel generation stage
+python rl.py config=configs/rl_sdar_kernel_final-8b.yaml
+```
 
 ### 3. Evaluation
 We evaluate all models based on [KernelBench](https://github.com/ScalingIntelligence/KernelBench).
