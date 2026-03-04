@@ -8,9 +8,11 @@
 
 <div align="center">
 
-**Haolei Bai<sup>1</sup>, Lingcheng Kong<sup>1,2</sup>, Xueyi Chen<sup>1</sup>, Jiamian Wang<sup>3</sup>, Zhiqiang Tao<sup>3</sup>, Huan Wang<sup>1,†</sup>**  
-*<sup>1</sup>Westlake University, <sup>2</sup>The Hong Kong University of Science and Technology, <sup>3</sup>Rochester Institute of Technology*  
-<sup>†</sup>Corresponding author
+[//]: # (**Haolei Bai<sup>1</sup>, Lingcheng Kong<sup>1,2</sup>, Xueyi Chen<sup>1</sup>, Jiamian Wang<sup>3</sup>, Zhiqiang Tao<sup>3</sup>, Huan Wang<sup>1,†</sup>**  )
+
+[//]: # (*<sup>1</sup>Westlake University, <sup>2</sup>The Hong Kong University of Science and Technology, <sup>3</sup>Rochester Institute of Technology*  )
+
+[//]: # (<sup>†</sup>Corresponding author)
 
 [![arXiv](https://img.shields.io/badge/arXiv-2602.11715-b31b1b.svg)](https://arxiv.org/abs/2602.11715)
 [![Hugging Face](https://img.shields.io/badge/🤗-Models-yellow)](https://huggingface.co/collections/DeadlyKitt3n/dice)
