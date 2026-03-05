@@ -14,7 +14,7 @@
 
 [![arXiv](https://img.shields.io/badge/arXiv-2602.11715-b31b1b.svg)](https://arxiv.org/abs/2602.11715)
 [![Hugging Face](https://img.shields.io/badge/🤗-Models-yellow)](https://huggingface.co/collections/DeadlyKitt3n/dice)
-[![GitHub Repo stars](https://img.shields.io/github/stars/deadlykitten4/DICE?style=flat-square)](https://github.com/deadlykitten4/DICE)
+[![GitHub Repo stars](https://img.shields.io/github/stars/deadlykitten4/DICE)](https://github.com/deadlykitten4/DICE)
 <br>**[<a href="https://huggingface.co/papers/2602.11715">HuggingFace Daily Paper</a>]**
 
 
